@@ -126,7 +126,7 @@ for x in xrange(1, count + 1):
 		elif y < x:
 			similarity[str(x)][str(y)] = similarity[str(y)][str(x)]
 		else:
-			similarity[str(x)][str(y)] = cosine(x, y) * alpha * math.exp(-abs((sentences[str(x)]['timestamp'] - sentences[str(x)]['timestamp']) / 3600 / 24))
+			similarity[str(x)][str(y)] = cosine(x, y) * alpha * math.exp(-abs((sentences[str(y)]['timestamp'] - sentences[str(x)]['timestamp']) / 3600 / 24))
 
 	total = 0
 	for y in xrange(1, count + 1):

@@ -10,6 +10,8 @@ sys.setdefaultencoding('utf8')
 
 inputFile = '../data/action.txt'
 fr = open(inputFile, 'r')
+outputFile = '../data/sampleTag.txt'
+fw = open(outputFile, 'w')
 
 def cov(news):
 	average = [0,0,0,0,0,0]
@@ -25,11 +27,14 @@ def cov(news):
 	for item in news:
 		tmp = 0
 		for x in xrange(0, 6):
-			total += (item[x] - average[x]) * (item[x] - average[x])
+			tmp += (item[x] - average[x]) * (item[x] - average[x])
 		tmp = math.sqrt(tmp)
 		total += tmp
+	total /= count
 
-	return [float('%.3f' % total), count] 
+	tag = [1,2,3,4,6,7]
+
+	return [float('%.3f' % total), tag[average.index(max(average))], count] 
 
 # 记录各个新闻的标注结果
 stat = {}
@@ -63,7 +68,14 @@ for key, value in stat.items():
 
 result = sorted(result.iteritems(), key=lambda x:float(x[1][0]))
 
+echo = '['
+count = 0
 for item in result:
 	print item[0], item[1]
+	echo += '[' + str(count) + ',' + str(item[1][0]) + '],'
+	count += 1
+	fw.write(str(item[0]) + ',' + str(item[1][0]) + ',' + str(item[1][1]) + ',' + str(item[1][2]) + '\n')
+print echo[:-1] + ']'
 
 fr.close()
+fw.close()
