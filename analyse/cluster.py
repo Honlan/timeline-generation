@@ -116,6 +116,9 @@ for line in fsample:
 	if not news.has_key(str(news_id)):
 		news[str(news_id)] = tmp
 
+	# if count == 10:
+	# 	break
+
 print '生成特征向量'
 print time.strftime( ISOTIMEFORMAT, time.localtime() )
 
@@ -131,6 +134,19 @@ for key, value in news.items():
 			tmp.append(value[item])
 	data.append(tmp)
 	ids.append(int(key))
+
+maxN = []
+
+for x in xrange(0, len(data[0])):
+	tmp = -1
+	for y in xrange(0, len(data)):
+		if data[y][x] > tmp:
+			tmp = data[y][x]
+	maxN.append(tmp)
+
+for x in xrange(0, len(data)):
+	for y in xrange(0, len(data[0])):
+		data[x][y] = float('%.4f' % (float(data[x][y]) / float(maxN[y])))
 
 kmeans = KMeans(init='k-means++', n_clusters=6, n_init=10)
 labels = kmeans.fit_predict(data)
