@@ -40,6 +40,8 @@ def cov(news):
 stat = {}
 result = {}
 
+# fw.write('id^error^tag^num\n')
+
 for line in fr:
 	line = line.rstrip('\n').split('^')
 	student_id = line[1]
