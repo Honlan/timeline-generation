@@ -124,6 +124,7 @@ for key, value in news.items():
 	matrix.append(tmp)
 matrix = np.array(matrix)
 print matrix.shape, len(titles), len(corpus)
+print matrix
 
 model = lda.LDA(n_topics=6, n_iter=100, random_state=1)
 model.fit(matrix)

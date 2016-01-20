@@ -103,7 +103,8 @@ for n in xrange(0, len(bases)):
 		tmp = []
 		for x in xrange(0, len(bases)):
 			if x == n:
-				continue
+				pass
+				# continue
 			if random.random() > 0:
 				tmp.append(bases[x])
 
