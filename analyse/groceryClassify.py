@@ -40,9 +40,9 @@ for line in fbase:
 	elif int(tag) == 2:
 		tag = '事实陈述'
 	elif int(tag) == 3:
-		tag = '各方态度'
-	elif int(tag) == 4:
 		tag = '事件演化'
+	elif int(tag) == 4:
+		tag = '各方态度'
 	elif int(tag) == 6:
 		tag = '直接关联'
 	elif int(tag) == 7:
@@ -64,15 +64,15 @@ for line in ftag:
 	elif int(tag) == 2:
 		tag = '事实陈述'
 	elif int(tag) == 3:
-		tag = '各方态度'
-	elif int(tag) == 4:
 		tag = '事件演化'
+	elif int(tag) == 4:
+		tag = '各方态度'
 	elif int(tag) == 6:
 		tag = '直接关联'
 	elif int(tag) == 7:
 		tag = '暂无关联'
 
-	if float(error) == 0 and int(num) > 1:
+	if float(error) == 0 and int(num) > 4:
 		sampleTag[str(news_id)] = tag
 
 print "分类样本新闻"
