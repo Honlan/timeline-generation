@@ -72,7 +72,7 @@ for line in ftag:
 	elif int(tag) == 7:
 		tag = '暂无关联'
 
-	if float(error) == 0 and int(num) > 4:
+	if float(error) == 0 and int(num) > 1:
 		sampleTag[str(news_id)] = tag
 
 print "分类样本新闻"
