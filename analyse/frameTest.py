@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding:utf8
 # 分类第一步，直接关联和暂无关联
+# 测试各种可能的方法
 
 import jieba.analyse
 import jieba.posseg as pseg
@@ -17,6 +18,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 import random
+import time
 
 # 参考新闻的url和分类
 inputFile = '../data/trainset.txt'
@@ -37,7 +39,7 @@ for line in fr:
 	news_id = int(line[0])
 	url = line[1]
 	title = line[2]
-	timestamp = line[3]
+	timestamp = int(time.mktime(time.strptime(line[3], '%Y-%m-%d')))
 	tag = int(line[4])
 	content = line[5]
 
